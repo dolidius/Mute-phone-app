@@ -15,8 +15,8 @@ const endingDate = new Date();
 endingDate.setHours(14)
 endingDate.setMinutes(27);
 
-const interval: ITimeInterval = new TimeInterval("1", 2, 3, startingDate, endingDate);
-
+const id = "233271427";
+const interval: ITimeInterval = new TimeInterval(id, 2, 3, startingDate, endingDate);
 
 describe("Formatting interval", () => {
     it('should format the interval correctly', () => {
@@ -39,8 +39,6 @@ describe("Adding interval", () => {
 
         await addInterval(2, 3, startingDate, endingDate);
 
-        const id = "233271427";
-        
         let muted = await AsyncStorage.getItem("@mutedIntervals");
         let mutedArr: ITimeInterval[] = JSON.parse(muted!);
 
@@ -56,151 +54,129 @@ describe("Adding interval", () => {
     });
 
 
-    // it('should add only correct intervals', async () => {
+    it("should add new interval to the intervals array", async () => {
+        const { addInterval } = root.intervalStore;
+        await addInterval(2, 3, startingDate, endingDate);
 
-    //     const intervalWrong: IInterval = {
-    //         Id: 2,
-    //         StartingDay: 4,
-    //         EndingDay: 4,
-    //         StartTime: "15:27",
-    //         EndTime: "14:27"
-    //     }
+        const { Intervals } = root.intervalStore;
 
-    //     const { addInteval } = root.mutedIntervals;
-    //     await addInteval(interval);
-    //     await addInteval(intervalWrong);
+        let exists = false;
+        Intervals.forEach((inter: ITimeInterval) => {
+            if (inter.Id === id) {
+                exists = true;
+            }
+        });
 
-    //     let muted = await AsyncStorage.getItem("mutedIntervals");
-    //     let mutedArr: IInterval[] = JSON.parse(muted!);
+        expect(exists).toBe(true);
 
-    //     let exists = false;
-    //     let existsWrong = false;
-    //     mutedArr.forEach(inter => {
-    //         if (inter.Id === interval.Id) {
-    //             exists = true;
-    //         }
+    });
 
-    //         if (inter.Id === intervalWrong.Id) {
-    //             existsWrong = true;
-    //         }
-
-    //     });
-
-    //     expect(exists).toBe(true);
-    //     expect(existsWrong).toBe(false);
-
-    // })
-
-    // it("should add new interval to the intervals array", () => {
-    //     const { addInterval, intervals } = root.mutedIntervals;
-    //     addInterval(interval).then(() => {
-    //         let exists = false;
-    //         intervals.forEach((inter: IInterval) => {
-    //             if (inter.Id === interval.Id) {
-    //                 exists = true;
-    //             }
-    //         });
-
-    //         expect(exists).toBe(true);
-
-    //     });
-
-    // });
 
 });
 
 
-// describe("Removing interval", () => {
-
-//     it("should remove interval from local database", () => {
-//         const { removeInterval } = root.mutedIntervals;
-//         removeInterval(interval).then(async () => {
-//             let muted = await AsyncStorage.getItem("mutedIntervals");
-//             let mutedArr: IInterval[] = JSON.parse(muted!);
-
-//             let exists = false;
-//             mutedArr.forEach(inter => {
-//                 if (inter.Id === interval.Id) {
-//                     exists = true;
-//                 }
-//             });
-
-//             expect(exists).toBe(false);
-
-//         });
-
-//     });
-
-//     it("should remove localization from the localizations array", () => {
-//         const { removeInterval, intervals } = root.mutedIntervals;
-//         removeInterval(interval).then(async () => {
-
-//             let exists = false;
-//             intervals.forEach((inter: IInterval) => {
-//                 if (inter.Id === interval.Id) {
-//                     exists = true;
-//                 }
-//             });
-
-//             expect(exists).toBe(true);
-
-//         });
-
-//     });
+describe("Removing interval", () => {
+    beforeEach(() => {
+        const { Intervals } = root.intervalStore;
+        Intervals.push(interval);
+    });
 
 
+    it("should remove interval from local database", async () => {
+        const { removeInterval } = root.intervalStore;
 
-// });
+        await removeInterval(id);
+        let muted = await AsyncStorage.getItem("@mutedIntervals");
+        let mutedArr: ITimeInterval[] = JSON.parse(muted!);
 
-// describe("Loading intervals", () => {
-//     it('should load all muted intervals', () => {
-//         const { loadIntervals, intervals } = root.mutedIntervals;
+        let exists = false;
+        mutedArr.forEach(inter => {
+            if (inter.Id === id) {
+                exists = true;
+            }
+        });
 
-//         loadIntervals().then(() => {
+        expect(exists).toBe(false);
 
-//             expect(Array.isArray(intervals)).toBe(true);
+    });
 
-//             intervals.forEach((inter: IInterval) => {
-//                 expect(inter).toHaveProperty('Id');
-//                 expect(inter).toHaveProperty('StartingDay');
-//                 expect(inter).toHaveProperty('EndingDay');
-//                 expect(inter).toHaveProperty('StartTime');
-//                 expect(inter).toHaveProperty('EndTime');
-//             });
+    it("should remove localization from the localizations array", async () => {
+        const { removeInterval } = root.intervalStore;
 
-//         });
-//     });
-// })
+        await removeInterval(id);
+
+        const { Intervals } = root.intervalStore;
+
+        let exists = false;
+        Intervals.forEach((inter: ITimeInterval) => {
+            if (inter.Id === id) {
+                exists = true;
+            }
+        });
+
+        expect(exists).toBe(false);
+
+    });
+
+});
+
+describe("Loading intervals", () => {
+    it('should load all muted intervals', async () => {
+        const { loadIntervals } = root.intervalStore;
+
+        await loadIntervals();
+
+        const { Intervals } = root.intervalStore;
+
+        expect(Array.isArray(Intervals)).toBe(true);
+
+        Intervals.forEach((inter: ITimeInterval) => {
+            expect(inter.Id).toBe(id);
+            expect(inter).toHaveProperty('Id');
+            expect(inter).toHaveProperty('StartingDay');
+            expect(inter).toHaveProperty('EndingDay');
+            expect(inter).toHaveProperty('StartingTime');
+            expect(inter).toHaveProperty('EndingTime');
+        });
+
+    });
+})
 
 
+describe("Intersecting intervals", () => {
+
+    it("should return true if two intervals are intersecting", () => {
+        const { intervalsIntersect } = root.intervalStore;
+
+        const startingDate = new Date();
+        startingDate.setHours(4);
+        startingDate.setMinutes(27);
+        
+        const endingDate = new Date();
+        endingDate.setHours(13);
+        endingDate.setMinutes(27);
+        
+        const interval2 = new TimeInterval("234271327", 2, 3, startingDate, endingDate);
+        
+        expect(intervalsIntersect(interval, interval2)).toBe(true);
+    })
 
 
+    // it("should return false if two intervals are not intersecting", () => {
+    //     const { intervalsIntersect } = root.intervalStore;
 
-// describe("Intersecting intervals", () => {
-//     const { intersecting } = root.mutedIntervals;
-
-//     it("should return true if two intervals are intersecting", () => {
-//         const interval2: IInterval = {
-//             Id: 2,
-//             StartingDay: 2,
-//             EndingDay: 3,
-//             StartTime: "04:27",
-//             EndTime: "13:27"
-//         }
-//         expect(intersecting(interval.Id, interval2.Id)).toBe(true);
-//     })
-
-
-//     it("should return false if two intervals are not intersecting", () => {
-//         const interval2: IInterval = {
-//             Id: 2,
-//             StartingDay: 3,
-//             EndingDay: 3,
-//             StartTime: "13:40",
-//             EndTime: "15:27"
-//         }
-//         expect(intersecting(interval.Id, interval2.Id)).toBe(false);
-//     })
+    //     const startingDate = new Date();
+    //     startingDate.setHours(13);
+    //     startingDate.setMinutes(40);
+        
+    //     const endingDate = new Date();
+    //     endingDate.setHours(15);
+    //     endingDate.setMinutes(27);
+        
+    //     const interval2 = new TimeInterval("3313401527", 3, 3, startingDate, endingDate);
+        
+    //     expect(intervalsIntersect(interval, interval2)).toBe(false);
+    // })
 
 
-// })
+})

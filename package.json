@@ -82,7 +82,7 @@
       "node_modules/(?!@react-native|react-native|react-native-system-setting)"
     ],
     "setupFiles": [
-      "<rootDir>/__tests__/setupTests.js"
+      "<rootDir>/setupTests.js"
     ]
   }
 }
