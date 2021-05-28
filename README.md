@@ -9,6 +9,8 @@
 
 ## Instalacja
 
+Aplikacja jest do pobrania [tutaj](https://github.com/dolidius/Mute-phone-app/releases)
+
 ## Screenshoty
 
 <div style="width:100%; display:flex; justify-content:space-between;">
@@ -19,11 +21,11 @@
 
 ## SOLID
 
--   S - Każdy [komponent]() w naszej apce jest odpowiedzialny za tylko jedną rzecz. Na przykład komponent [MutedLocalizationsItem]() pokazuje informacje o pojedynczej wyciszonej lokalizacji na liście, albo komponent [DayPicker]() pozwala użytkownikowi na wybranie jednego dnia tygodnia.
--   O - Każdy komponent w naszej aplikacji działa na bazie 'propsów' czyli wartości przekazywanych między rodzicem i jego dzieckiem. Np. komponent [DayPicker]() otrzymuje funkcję onCancel, która może być zdefiniowana w dowolny sposób w różnych miejscach, co umożliwia dodawanie funkcjonalności, bez potrzeby modyfikacji. Ponadto, najlepszym przykładem na 'O' w apce jest komponent [Screens](), który pozwala na dodanie nowych routów nawigacji bez potrzeby modyfikacji istniejącego kodu.
+-   S - Każdy [komponent](https://github.com/dolidius/Mute-phone-app/tree/master/components) w naszej apce jest odpowiedzialny za tylko jedną rzecz. Na przykład komponent [MutedLocalizationsItem](https://github.com/dolidius/Mute-phone-app/blob/master/components/MutedLocalizations/MutedLocalizationsItem.tsx) pokazuje informacje o pojedynczej wyciszonej lokalizacji na liście, albo komponent [DayPicker](https://github.com/dolidius/Mute-phone-app/blob/master/components/DayPicker/DayPicker.tsx) pozwala użytkownikowi na wybranie jednego dnia tygodnia.
+-   O - Każdy komponent w naszej aplikacji działa na bazie 'propsów' czyli wartości przekazywanych między rodzicem i jego dzieckiem. Np. komponent [DayPicker](https://github.com/dolidius/Mute-phone-app/blob/master/components/DayPicker/DayPicker.tsx) otrzymuje funkcję onCancel, która może być zdefiniowana w dowolny sposób w różnych miejscach, co umożliwia dodawanie funkcjonalności, bez potrzeby modyfikacji. Ponadto, najlepszym przykładem na 'O' w apce jest komponent [Screens](https://github.com/dolidius/Mute-phone-app/blob/master/components/Screens/Screens.tsx), który pozwala na dodanie nowych routów nawigacji bez potrzeby modyfikacji istniejącego kodu.
 -   L - Nasza aplikacja używa OOP w bardzo małym stopniu bez potrzeby dziedziczenia.
--   I - Wszystkie [interfejsy]() w kodzie są podzielone na dużo małych. Np. interfejs [Localizations]() zamiast mieć w sobie wszystkie fieldy adresu, używa dodatkowego interfejsu Address.
--   D - Nasze komponenty polegają na funkcjach które zdefiniowane są gdzie indziej i tylko je wywołuja, a implementacja ukryta jest w innym miejscu. Np. w [App]() na starcie aplikacji wywoływane są 3 funkcje wczytujące interesujące nas dane:
+-   I - Wszystkie [interfejsy](https://github.com/dolidius/Mute-phone-app/tree/master/classess/interfaces) w kodzie są podzielone na dużo małych. Np. interfejs [Localizations](https://github.com/dolidius/Mute-phone-app/blob/master/classess/interfaces/ILocalization.ts) zamiast mieć w sobie wszystkie fieldy adresu, używa dodatkowego interfejsu Address.
+-   D - Nasze komponenty polegają na funkcjach które zdefiniowane są gdzie indziej i tylko je wywołuja, a implementacja ukryta jest w innym miejscu. Np. w [App](https://github.com/dolidius/Mute-phone-app/blob/master/App.tsx) na starcie aplikacji wywoływane są 3 funkcje wczytujące interesujące nas dane:
 
 ```javascript
 useEffect(() => {
@@ -40,13 +42,13 @@ useEffect(() => {
 ![Flux](https://i.pinimg.com/originals/b8/24/08/b82408c417ba88355f0307ff19f78cff.gif)
 Bazą naszej aplikacji jest Flux pattern, który polega na tym że przepływ zmiennych pomiędzy komponentami dzieje się w storach. Każdy komponent w dowolnym momencie jest w stanie używać funkcje i zmienne które są w nim zdefiniowane. W naszym kodzie:
 
--   View: [Komponenty]()
--   Store: [Miejsce w którym jest przechowywany state aplikacji]()
--   Action: Funkcje wywołujące dispatcher
+-   View: [Komponenty](https://github.com/dolidius/Mute-phone-app/tree/master/components)
+-   Store: [Miejsce w którym jest przechowywany state aplikacji](https://github.com/dolidius/Mute-phone-app/tree/master/store)
+-   Action: Funkcje wywołujące dispatcher ze store
 -   Dispatcher: Powodują zmiane state aplikacji
 
 ### Conditional rendering pattern
-Jest to pattern który polega na renderowaniu komponentów jedynie przy spełnieniu jakichś założeń. Np. w [Map]() chcemy renderować LocalizationModal tylko i wyłącznie jeśli wartość poi istnieje. 
+Jest to pattern który polega na renderowaniu komponentów jedynie przy spełnieniu jakichś założeń. Np. w [Map](https://github.com/dolidius/Mute-phone-app/tree/master/components/Map) chcemy renderować LocalizationModal tylko i wyłącznie jeśli wartość poi istnieje. 
 
 ```javascript
 {

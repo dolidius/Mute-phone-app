@@ -5,7 +5,6 @@ import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
-import com.pilloxa.backgroundjob.BackgroundJobPackage;
 import com.jamesisaac.rnbackgroundtask.BackgroundTaskPackage;
 import com.github.simonerm.JobQueuePackage;
 import org.reactnative.maskedview.RNCMaskedViewPackage;
