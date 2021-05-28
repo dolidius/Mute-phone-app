@@ -15,7 +15,6 @@ import createAddress from '../components/Helpers/createAddress';
 export default class MutedLocalizationsStore {
     rootStore: RootStore;
     Localizations: ILocalization[] = [];
-    Kappa: string[] = [];
     CurrentLocalization: ILocalization | null = null;
     Loading: Boolean = false;
 
@@ -37,11 +36,15 @@ export default class MutedLocalizationsStore {
                 { latitude: currentLongitude, longitude: currentLatitude },
             );
 
+            // if the distance of current users location is 20 meters or less 
+            // from one of the muted locations, mute the phone
             if (dist <= 20) {
                 mute = true;
                 this.rootStore.userStore.mute();
             }
         }
+
+        // if user was muted and moved from the location, unmute
         if (!mute && this.rootStore.userStore.mutedPhone) {
             this.rootStore.userStore.unmute();
         }
@@ -101,6 +104,9 @@ export default class MutedLocalizationsStore {
                     ? JSON.parse(mutedLocalizations)
                     : [];
             const classessArr: ILocalization[] = [];
+
+            // when taking the data from async store, we need to create all the classes again
+            // as it is a raw data
             mutedLocalizationsArr.forEach((loc: ILocalization) => {
                 let {
                     Country,
@@ -148,11 +154,12 @@ export default class MutedLocalizationsStore {
             }
         }
 
+        // if the localization is not in the muted array, call the google api to get the info of it
         if (!isMuted) {
-            //google api call
+
             try {
                 const res = await axios.get(
-                    `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&fields=name,icon,address_component,type&key=AIzaSyAIgSJ1oQIdzeKrUhEnKHoEeGCqkyLdSLA`,
+                    `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&fields=name,icon,address_component,type&key=${process.env.GOOGLE_API_KEY}`,
                 );
                 const {
                     name,

@@ -37,6 +37,7 @@ export default class UserStore {
                     latitudeDelta: 0.005,
                     longitudeDelta: 0.005,
                 };
+                // always check if new localization of user should be muted or not
                 this.rootStore.mutedLocalizationsStore.checkIfMuted();
 
                 this.loading = false;
@@ -52,6 +53,7 @@ export default class UserStore {
 
     mute = async () => {
         try {
+            // we need the previous volume of user to unmute it right later on
             this.prevVolume = await VolumeControl.getVolume();
 
             try {

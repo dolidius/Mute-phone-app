@@ -28,6 +28,7 @@ export default class IntervalStore {
         const currDate = new Date();
 
         this.Intervals.forEach(interval => {
+
             const hour = interval.StartingTime.getHours();
             const minute = interval.StartingTime.getMinutes();
             let date = new Date();
@@ -36,9 +37,12 @@ export default class IntervalStore {
             date.setSeconds(0);
             date.setMilliseconds(0);
 
+            // get date of the closest day of the week from now and give it correct time
             let futureData = getNextDayOfWeek(date, interval.StartingDay);
 
             let diff = futureData.getTime() - currDate.getTime();
+
+            // if there is a time interval that has to mute 15 or less minutes from now, set the timeout that will mute in the exact time
             if (diff <= 900000 && diff >= 0) {
                 this.ClosestInterval = interval;
                 this.Timeout = setTimeout(() => {
@@ -51,6 +55,7 @@ export default class IntervalStore {
         });
     };
 
+    // Function sets a timeout that will unmute the phone after muting it when the time is right
     setFutureUnmute = () => {
         const shour = this.CurrentInterval!.StartingTime.getHours();
         const sminute = this.CurrentInterval!.StartingTime.getMinutes();
@@ -131,11 +136,13 @@ export default class IntervalStore {
             (interval: ITimeInterval) => interval.Id !== id,
         );
 
+        // if user is deleting interval that is setup to fire the muting soon
         if (this.ClosestInterval && this.ClosestInterval.Id === id) {
             clearTimeout(this.Timeout!);
             this.checkIfMuted();
         }
 
+        // if user is deleting interval that is muting the app right now
         if (this.CurrentInterval && this.CurrentInterval.Id === id) {
             clearTimeout(this.TimeoutUnmute!);
         }
@@ -178,6 +185,8 @@ export default class IntervalStore {
         interval1: ITimeInterval,
         interval2: ITimeInterval,
     ): boolean => {
+        // changes time intervals into floats so that the comparision between dates can be made using normal numbers
+        // for example monday 13:23 is 113.23
         let startTime1 = parseFloat(
             `${interval1.StartingDay * 100 + interval1.StartingTime.getHours()
             }.${interval1.StartingTime.getMinutes()}`,

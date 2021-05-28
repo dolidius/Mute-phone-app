@@ -22,12 +22,18 @@ const options: IOptions = {
 
 export default class SettingsStore {
     RootStore: RootStore;
+
+    // boolean that lets us know if user wants the background service to work
     MutedFunctionality: boolean = true;
+
+    // boolean that lets us know if the background service is started
     IsActive: boolean = false;
+
     BackgroudService: IBService;
 
     constructor(rootStore: RootStore) {
         this.RootStore = rootStore;
+
         this.BackgroudService = new BService(
             options,
             this.RootStore.userStore.updateCurrentLocation,
@@ -38,6 +44,11 @@ export default class SettingsStore {
 
     loadSettings = async () => {
         try {
+            /*
+                async storage cannot have boolea values, so it works like this:
+                "1" - true
+                "0" - false
+            */
             const mf = await AsyncStorage.getItem('@mutedFunctionality');
             const iA = await AsyncStorage.getItem('@isActive');
 
@@ -77,6 +88,7 @@ export default class SettingsStore {
         }
     };
 
+    // function that enables user to turn on or turn off the background service
     changeFunctionality = async () => {
         try {
             this.MutedFunctionality = !this.MutedFunctionality;
