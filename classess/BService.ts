@@ -9,8 +9,7 @@ class BService implements IBService {
     checkIfMutedInterval: () => void;
     updateCurrentLocalization: () => void;
 
-    constructor(options: IOptions, updateCurrentLocalization: () => void, checkIfMutedInterval: () => void)
-    {
+    constructor(options: IOptions, updateCurrentLocalization: () => void, checkIfMutedInterval: () => void) {
         this.Options = options;
         this.updateCurrentLocalization = updateCurrentLocalization;
         this.checkIfMutedInterval = checkIfMutedInterval
@@ -19,8 +18,7 @@ class BService implements IBService {
     private VeryIntensiveTask = async (taskDataArguments: IParameters | undefined) => {
         const { delay } = taskDataArguments!;
         await new Promise(async (resolve) => {
-            while(true) {
-                // this.updateCurrentLocalization();
+            while (true) {
                 this.checkIfMutedInterval();
                 await sleep(delay);
             }
