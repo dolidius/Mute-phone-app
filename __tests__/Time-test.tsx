@@ -162,21 +162,21 @@ describe("Intersecting intervals", () => {
     })
 
 
-    // it("should return false if two intervals are not intersecting", () => {
-    //     const { intervalsIntersect } = root.intervalStore;
+    it("should return false if two intervals are not intersecting", () => {
+        const { intervalsIntersect } = root.intervalStore;
 
-    //     const startingDate = new Date();
-    //     startingDate.setHours(13);
-    //     startingDate.setMinutes(40);
+        const startingDate = new Date();
+        startingDate.setHours(13);
+        startingDate.setMinutes(40);
 
-    //     const endingDate = new Date();
-    //     endingDate.setHours(15);
-    //     endingDate.setMinutes(27);
+        const endingDate = new Date();
+        endingDate.setHours(15);
+        endingDate.setMinutes(27);
 
-    //     const interval2 = new TimeInterval("3313401527", 3, 3, startingDate, endingDate);
+        const interval2 = new TimeInterval("3313401527", 4, 5, startingDate, endingDate);
 
-    //     expect(intervalsIntersect(interval, interval2)).toBe(false);
-    // })
+        expect(intervalsIntersect(interval, interval2)).toBe(false);
+    })
 
 
 })

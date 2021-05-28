@@ -6,6 +6,7 @@
 -   [Screenshoty](#screenshoty)
 -   [SOLID](#SOLID)
 -   [Wzorce projektowe](#wzorce-projektowe)
+-   [Wykaz testów](#wykaz-testów)
 
 ## Instalacja
 
@@ -64,3 +65,7 @@ Jest to pattern który polega na renderowaniu komponentów jedynie przy spełnie
 ```
 
 Pomaga to w utrzymaniu czystości kodu, nie trzeba zwracać kilka razy różnych elementów w zależnośći od zmiennych, zamiast tego jest to rozwiązane w ten prosty sposób
+
+## Wykaz testów
+
+![](https://i.postimg.cc/xjv0T1zv/testy.png)

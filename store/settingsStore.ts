@@ -15,7 +15,7 @@ const options: IOptions = {
     },
     color: '#ff00ff',
     parameters: {
-        delay: 1000000,
+        delay: 120000,
     },
     actions: '["Exit"]',
 };
