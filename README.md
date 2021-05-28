@@ -9,6 +9,8 @@
 
 ## Instalacja
 
+Aplikacja jest do pobrania [tutaj]()
+
 ## Screenshoty
 
 <div style="width:100%; display:flex; justify-content:space-between;">
@@ -19,7 +21,7 @@
 
 ## SOLID
 
--   S - Każdy [komponent]() w naszej apce jest odpowiedzialny za tylko jedną rzecz. Na przykład komponent [MutedLocalizationsItem]() pokazuje informacje o pojedynczej wyciszonej lokalizacji na liście, albo komponent [DayPicker]() pozwala użytkownikowi na wybranie jednego dnia tygodnia.
+-   S - Każdy [komponent](https://github.com/dolidius/Mute-phone-app/tree/1.0.0/components) w naszej apce jest odpowiedzialny za tylko jedną rzecz. Na przykład komponent [MutedLocalizationsItem]() pokazuje informacje o pojedynczej wyciszonej lokalizacji na liście, albo komponent [DayPicker]() pozwala użytkownikowi na wybranie jednego dnia tygodnia.
 -   O - Każdy komponent w naszej aplikacji działa na bazie 'propsów' czyli wartości przekazywanych między rodzicem i jego dzieckiem. Np. komponent [DayPicker]() otrzymuje funkcję onCancel, która może być zdefiniowana w dowolny sposób w różnych miejscach, co umożliwia dodawanie funkcjonalności, bez potrzeby modyfikacji. Ponadto, najlepszym przykładem na 'O' w apce jest komponent [Screens](), który pozwala na dodanie nowych routów nawigacji bez potrzeby modyfikacji istniejącego kodu.
 -   L - Nasza aplikacja używa OOP w bardzo małym stopniu bez potrzeby dziedziczenia.
 -   I - Wszystkie [interfejsy]() w kodzie są podzielone na dużo małych. Np. interfejs [Localizations]() zamiast mieć w sobie wszystkie fieldy adresu, używa dodatkowego interfejsu Address.
