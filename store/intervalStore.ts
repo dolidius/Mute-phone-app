@@ -179,28 +179,23 @@ export default class IntervalStore {
         interval2: ITimeInterval,
     ): boolean => {
         let startTime1 = parseFloat(
-            `${
-                interval1.StartingDay * 100 + interval1.StartingTime.getHours()
+            `${interval1.StartingDay * 100 + interval1.StartingTime.getHours()
             }.${interval1.StartingTime.getMinutes()}`,
         );
         let startTime2 = parseFloat(
-            `${
-                interval2.StartingDay * 100 + interval2.StartingTime.getHours()
+            `${interval2.StartingDay * 100 + interval2.StartingTime.getHours()
             }.${interval2.StartingTime.getMinutes()}`,
         );
         let endTime1 = parseFloat(
-            `${
-                interval1.EndingDay * 100 + interval1.EndingTime.getHours()
+            `${interval1.EndingDay * 100 + interval1.EndingTime.getHours()
             }.${interval1.EndingTime.getMinutes()}`,
         );
         let endTime2 = parseFloat(
-            `${
-                interval2.EndingDay * 100 + interval2.EndingTime.getHours()
+            `${interval2.EndingDay * 100 + interval2.EndingTime.getHours()
             }.${interval2.EndingTime.getMinutes()}`,
         );
 
-        return Math.max(startTime1, startTime1) <= Math.min(endTime1, endTime2);
+        return Math.max(startTime1, startTime2) <= Math.min(endTime1, endTime2);
 
-        return false;
     };
 }
