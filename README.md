@@ -44,7 +44,7 @@ Bazą naszej aplikacji jest Flux pattern, który polega na tym że przepływ zmi
 
 -   View: [Komponenty](https://github.com/dolidius/Mute-phone-app/tree/master/components)
 -   Store: [Miejsce w którym jest przechowywany state aplikacji](https://github.com/dolidius/Mute-phone-app/tree/master/store)
--   Action: Funkcje wywołujące dispatcher
+-   Action: Funkcje wywołujące dispatcher ze store
 -   Dispatcher: Powodują zmiane state aplikacji
 
 ### Conditional rendering pattern
