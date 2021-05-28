@@ -9,12 +9,6 @@ const Settings = () => {
     const rootStore = useContext(RootStoreContext);
     const { MutedFunctionality, changeFunctionality } = rootStore.settingsStore;
 
-    const [mutingFunc, setMutingFunc] = useState(true);
-
-    const toggleSwitch = () => {
-        setMutingFunc(previousState => !previousState);
-    };
-
     return (
         <View>
             <View style={styles.settingsItem}>

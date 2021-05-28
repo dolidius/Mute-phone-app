@@ -16,6 +16,7 @@ import LocalizationModal from '../LocalizationModal/LocalizationModal';
 const Map = () => {
     const [region, setRegion] = useState<Region | undefined>(undefined);
 
+    // object that contains id of location after pressing it on the map
     const [poi, setPoi] = useState<any>(null);
 
     const [isLocModalOpened, setLocModalOpened] = useState(false);

@@ -151,13 +151,13 @@ describe("Intersecting intervals", () => {
         const startingDate = new Date();
         startingDate.setHours(4);
         startingDate.setMinutes(27);
-        
+
         const endingDate = new Date();
         endingDate.setHours(13);
         endingDate.setMinutes(27);
-        
+
         const interval2 = new TimeInterval("234271327", 2, 3, startingDate, endingDate);
-        
+
         expect(intervalsIntersect(interval, interval2)).toBe(true);
     })
 
@@ -168,13 +168,13 @@ describe("Intersecting intervals", () => {
     //     const startingDate = new Date();
     //     startingDate.setHours(13);
     //     startingDate.setMinutes(40);
-        
+
     //     const endingDate = new Date();
     //     endingDate.setHours(15);
     //     endingDate.setMinutes(27);
-        
+
     //     const interval2 = new TimeInterval("3313401527", 3, 3, startingDate, endingDate);
-        
+
     //     expect(intervalsIntersect(interval, interval2)).toBe(false);
     // })
 

@@ -21,6 +21,14 @@ const MutedTimes = () => {
     const [time, setTime] = useState<Date[]>([]);
     const [days, setDays] = useState<number[]>([]);
     const [mode, setMode] = useState<"time" | "date" | undefined>('time');
+
+    /*
+        show manages the state of adding new interval:
+        1 - adding starting day
+        2 - adding starting time
+        3 - adding ending day
+        4 - adding ending time + submiting
+    */
     const [show, setShow] = useState(0);
 
 

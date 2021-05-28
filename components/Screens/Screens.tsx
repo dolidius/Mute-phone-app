@@ -20,6 +20,7 @@ interface IScreen {
     iconURI: string,
 }
 
+// if you want to add a new screen, do it in this array
 const screens: IScreen[] = [
     {
         name: "Map",
