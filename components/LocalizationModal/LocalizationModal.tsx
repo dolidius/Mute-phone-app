@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Modal, StyleSheet, Text, View, Pressable, Image } from "react-native";
+import { Modal, StyleSheet, Text, View, Pressable, Image, ActivityIndicator } from "react-native";
 
 import Footer from './Footer';
 import Header from './Header';
@@ -40,7 +40,10 @@ const LocalizationModal: React.FC<IProps> = ({ isClosed, closeModal, placeId, co
             >
                 {Loading &&
                     <View style={styles.centeredView}>
-                        <Text>Spinner</Text>
+                        <View style={styles.modalView}>
+                            <ActivityIndicator />
+
+                        </View>
                     </View>
                 }
                 {!Loading && CurrentLocalization !== null &&
