@@ -69,3 +69,5 @@ Pomaga to w utrzymaniu czystości kodu, nie trzeba zwracać kilka razy różnych
 ## Wykaz testów
 
 ![](https://i.postimg.cc/xjv0T1zv/testy.png)
+
+.
