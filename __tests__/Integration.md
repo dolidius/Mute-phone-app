@@ -1,7 +1,27 @@
-![](https://i.postimg.cc/dknjnksS/dodanie-godziny.png)
-![](https://i.postimg.cc/JHncFrt7/dodanie-lokalizacji.png)
-![](https://i.postimg.cc/145HXHMx/lista.png)
-![](https://i.postimg.cc/YjnxWWyv/odciszenie-telefonu.png)
-![](https://i.postimg.cc/56XSq2Zn/ustawienia.png)
-![](https://i.postimg.cc/xcBysSQY/usuniecie-lokalizacji.png)
-![](https://i.postimg.cc/ZW3P2DYN/wyciszenie-telefonu.png)
+## 1: Dodanie lokalizacji
+
+![](https://i.postimg.cc/J036GtLX/dodanie-lokalizacji.png)
+
+## 2: Dodanie godziny
+
+![](https://i.postimg.cc/zvY2zK95/dodanie-godziny.png)
+
+## 3: Wyciszenie telefonu
+
+![](https://i.postimg.cc/JzYTy99p/wyciszenie-telefonu.png)
+
+## 4: Odciszenie telefonu
+
+![](https://i.postimg.cc/dtvNgR2j/odciszenie-telefonu.png)
+
+## 7: Lista
+
+![](https://i.postimg.cc/dQGSW-Ny0/lista.png)
+
+## 8: Usunięcie lokalizacji
+
+![](https://i.postimg.cc/0yyWy8H6/usuniecie-lokalizacji.png)
+
+## 11: Ustawienia
+
+![](https://i.postimg.cc/9Fpg2415/ustawienia.png)
