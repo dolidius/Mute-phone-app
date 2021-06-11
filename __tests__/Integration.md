@@ -1,0 +1,7 @@
+![](https://i.postimg.cc/dknjnksS/dodanie-godziny.png)
+![](https://i.postimg.cc/JHncFrt7/dodanie-lokalizacji.png)
+![](https://i.postimg.cc/145HXHMx/lista.png)
+![](https://i.postimg.cc/YjnxWWyv/odciszenie-telefonu.png)
+![](https://i.postimg.cc/56XSq2Zn/ustawienia.png)
+![](https://i.postimg.cc/xcBysSQY/usuniecie-lokalizacji.png)
+![](https://i.postimg.cc/ZW3P2DYN/wyciszenie-telefonu.png)
